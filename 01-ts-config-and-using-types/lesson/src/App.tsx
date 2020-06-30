@@ -2,8 +2,29 @@ import React from 'react'
 import logo from './logo.svg'
 import './App.css'
 
-// todo define function to uppercase first letter
-// todo: show type inference between let and const
+const objectVar: {} = {
+    name: 'Braedon',
+    age: 25,
+    lovesIceCream: true,
+}
+
+const booleanVar = true
+
+// Object where we specify the structure
+const objectWithTypes: {
+    name: string
+    age: number
+    lovesIceCream?: boolean
+} = {
+    name: 'Braedon',
+    age: 25,
+}
+
+Object.keys(objectWithTypes)
+
+function add(numberOne: number, numberTwo: number) {
+    return numberOne + numberTwo
+}
 
 function App() {
     return (
