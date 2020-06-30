@@ -2,15 +2,33 @@ import React from 'react'
 import logo from './logo.svg'
 import './App.css'
 
-// Todo: Show FC alias
+interface Company {
+    legalName: string
+    address: string
+}
 
-// Todo: demonstration intersections
+interface Person {
+    name: string
+    address: string
+}
 
-// Todo: Create a union type and demo autocompletion for only shared properties
+interface Unknown {
+    entityName: string
+    address: string
+}
 
-// Todo: Create string literal union type and show string auto completion
+type ButtonColor = 'red' | 'green'
 
-function App() {
+// export enum ButtonColor {
+//     RED = 'red',
+//     GREEN = 'green',
+// }
+
+interface Props {
+    buttonColor: ButtonColor // red or green
+}
+
+function App({ buttonColor }: Props) {
     return (
         <div className="App">
             <header className="App-header">
@@ -18,14 +36,9 @@ function App() {
                 <p>
                     Edit <code>src/App.tsx</code> and save to reload.
                 </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    hi
-                </a>
+                <button style={{ backgroundColor: buttonColor, fontSize: 50 }}>
+                    CLICK ME
+                </button>
             </header>
         </div>
     )
