@@ -5,16 +5,25 @@ import './App.css'
 interface Company {
     legalName: string
     address: string
+    entityType: 'company'
 }
 
 interface Person {
     name: string
     address: string
+    entityType: 'person'
 }
 
-interface Unknown {
-    entityName: string
-    address: string
+type Entity = Person | Company
+// now the entityType property will be typed as 'person' | 'company'
+
+const getEntityName = (entity: Entity) => {
+    switch (entity.entityType) {
+        case 'company':
+            return entity.legalName
+        case 'person':
+            return entity.name
+    }
 }
 
 type ButtonColor = 'red' | 'green'
