@@ -15,7 +15,7 @@ interface TodoItemProps {
     todo: Todo
 }
 
-const TodoItem = (props: TodoItemProps) => {
+const TodoItem: FunctionComponent<TodoItemProps> = (props) => {
     const [checked, setChecked] = useState(props.todo.completed)
 
     const onChange = (event: ChangeEvent<HTMLInputElement>) =>
@@ -38,8 +38,40 @@ const TodoItem = (props: TodoItemProps) => {
     )
 }
 
+interface FormProps {
+    onSubmit: (event: FormEvent<HTMLFormElement>) => void
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void
+    value: string
+}
+
+const Form = ({ onSubmit, value, onChange }: FormProps) => {
+    return (
+        <form onSubmit={onSubmit}>
+            <input type="text" onChange={onChange} value={value} />
+        </form>
+    )
+}
+
 const TodoList = () => {
-    const [todos, setTodos] = useState([])
+    const [todos, setTodos] = useState<Todo[]>([])
+    const [value, setValue] = useState('')
+
+    const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setValue(event.target.value)
+    }
+
+    const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+
+        const newTodo: Todo = {
+            description: value,
+            completed: false,
+        }
+
+        setTodos([...todos, newTodo])
+
+        setValue('')
+    }
 
     return (
         <div>
@@ -51,6 +83,7 @@ const TodoList = () => {
                     todos.map((todo) => <TodoItem todo={todo} />)
                 )}
             </ul>
+            <Form onChange={onChange} value={value} onSubmit={onSubmit} />
         </div>
     )
 }
