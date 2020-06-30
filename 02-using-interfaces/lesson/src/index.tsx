@@ -14,6 +14,14 @@ ReactDOM.render(
                 createdAt: '2020',
             }}
         />
+        <App
+            user={{
+                firstName: 'Braedon',
+                lastName: 'Gough',
+                age: 25,
+                createdAt: '2020',
+            }}
+        />
     </React.StrictMode>,
     document.getElementById('root')
 )
