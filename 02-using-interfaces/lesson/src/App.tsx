@@ -1,29 +1,40 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React from 'react'
+import logo from './logo.svg'
+import './App.css'
 
-// todo: Try to add a prop not defined in the interface
-// todo: Omit a prop defined in the interface
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function getUserName(user: User) {
+    return user.firstName + user.lastName
 }
 
-export default App;
+interface Timestamps {
+    createdAt: string
+    updatedAt?: string
+    deletedAt?: string
+}
+
+interface User extends Timestamps {
+    firstName: string
+    lastName: string
+    age: number
+}
+
+interface Props {
+    user: User
+}
+
+function App(props: Props) {
+    const name = getUserName(props.user)
+    return (
+        <div className="App">
+            <header className="App-header">
+                <img src={logo} className="App-logo" alt="logo" />
+                <p>
+                    Edit <code>src/App.tsx</code> and save to reload.
+                </p>
+                {name}
+            </header>
+        </div>
+    )
+}
+
+export default App
