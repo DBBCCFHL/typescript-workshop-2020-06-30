@@ -26,6 +26,10 @@ function add(numberOne: number, numberTwo: number) {
     return numberOne + numberTwo
 }
 
+// const name = 'Braedon'
+
+let name = 'braedon'
+
 function App() {
     return (
         <div className="App">

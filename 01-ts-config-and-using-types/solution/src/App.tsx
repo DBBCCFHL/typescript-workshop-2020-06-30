@@ -1,32 +1,34 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React from 'react'
+import logo from './logo.svg'
+import './App.css'
 
 function App() {
-  const getUserName = (user: { firstName: string; lastName: string }) =>
-    `${user.firstName} ${user.lastName}`;
+    const getUserName = (user: { firstName: string; lastName: string }) => {
+        return `${user.firstName} ${user.lastName}`
+    }
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <div>
-          user: {getUserName({ firstName: "Braedon", lastName: "Gough" })}
+    return (
+        <div className="App">
+            <header className="App-header">
+                <img src={logo} className="App-logo" alt="logo" />
+                <p>
+                    Edit <code>src/App.tsx</code> and save to reload.
+                </p>
+                <a
+                    className="App-link"
+                    href="https://reactjs.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Learn React
+                </a>
+                <div>
+                    user:{' '}
+                    {getUserName({ firstName: 'Braedon', lastName: 'Gough' })}
+                </div>
+            </header>
         </div>
-      </header>
-    </div>
-  );
+    )
 }
 
-export default App;
+export default App
